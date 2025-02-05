@@ -7,7 +7,7 @@ bot = commands.InteractionBot()
 
 @bot.event
 async def on_ready():
-    print("Bot is enabled")
+    print("Bot enabled")
 
 bot.load_extensions("modules")
 load_dotenv('secrets.env')
