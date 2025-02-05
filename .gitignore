@@ -1,0 +1,4 @@
+/.idea/*
+secrets.env
+__pychache__/
+config.json
