@@ -1,7 +1,5 @@
 import disnake
 from disnake.ext import commands
-from disnake.types.interactions import ApplicationCommandInteraction
-
 
 class TestCommand(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -17,14 +15,13 @@ class TestCommand(commands.Cog):
         )
 
     @commands.slash_command()
-    async def ping(self, inter: disnake.ApplicationCommandInteraction):
-        await inter.response.send_message("Pong")
-
-    @commands.slash_command()
-    async def defer(self, inter: disnake.ApplicationCommandInteraction):
-        await inter.response.defer
-        await inter.response.sleep(10)
-        await inter.edit_original_message(content="Wait... completed!")
+    async def confirm(self, inter: disnake.ApplicationCommandInteraction):
+        await inter.response.send_modal(
+            title="Подтверждение",
+            custom_id="confirm-or-deny",
+            components=[disnake.ui.TextInput(label="подтвердить?", custom_id="confirm")],
+        )
+        await inter.followup.send(content="Пожалуйста, не закрывайте модальное окно!", ephemeral=True)
 
 def setup(bot: commands.Bot):
     bot.add_cog(TestCommand(bot))

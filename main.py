@@ -4,7 +4,7 @@ from disnake.ext import commands
 from disnake import TextInputStyle
 from dotenv import load_dotenv
 
-bot = commands.Bot("!", test_guilds=[1336046980908191805])
+bot = commands.InteractionBot()
 
 @bot.event
 async def on_ready():

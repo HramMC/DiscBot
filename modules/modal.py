@@ -39,7 +39,7 @@ class MyModal(disnake.ui.Modal, commands.Cog):
     @commands.slash_command()
     async def tags(self, inter: disnake.AppCmdInter):
         """Отправляет модальное окно для создания тега"""
-        await inter.response.send_modal(modal=MyModal())
+        await inter.response.send_modal(modal=MyModal(bot=self.bot))
 
 def setup(bot: commands.Bot):
-    bot.add_cog(MyModal())
+    bot.add_cog(MyModal(bot))
