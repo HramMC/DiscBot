@@ -9,6 +9,6 @@ bot = commands.InteractionBot()
 async def on_ready():
     print("Bot is enabled")
 
-# bot.load_extensions("moduls")
+bot.load_extensions("modules")
 load_dotenv('secrets.env')
 bot.run(os.environ["BOT_TOKEN"])
